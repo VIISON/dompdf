@@ -68,6 +68,8 @@ use Dompdf\Css\Stylesheet;
  *
  *
  * @package dompdf
+ *
+ * @Shopware\noEncryption
  */
 class Dompdf
 {
