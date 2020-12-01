@@ -581,7 +581,7 @@ class Helpers
     public static function cmyk_to_rgb($c, $m = null, $y = null, $k = null)
     {
         if (is_array($c)) {
-            [$c, $m, $y, $k] = $c;
+            list($c, $m, $y, $k) = $c;
         }
 
         $c *= 255;
@@ -624,7 +624,7 @@ class Helpers
             return $cache[$filename];
         }
 
-        [$width, $height, $type] = getimagesize($filename);
+        list($width, $height, $type) = getimagesize($filename);
 
         // Custom types
         $types = [
@@ -637,7 +637,7 @@ class Helpers
         $type = isset($types[$type]) ? $types[$type] : null;
 
         if ($width == null || $height == null) {
-            [$data, $headers] = Helpers::getFileContent($filename, $context);
+            list($data, $headers) = Helpers::getFileContent($filename, $context);
 
             if (!empty($data)) {
                 if (substr($data, 0, 2) === "BM") {
@@ -650,7 +650,7 @@ class Helpers
                         $doc = new \Svg\Document();
                         $doc->loadFile($filename);
 
-                        [$width, $height] = $doc->getDimensions();
+                        list($width, $height) = $doc->getDimensions();
                         $type = "svg";
                     }
                 }
@@ -854,7 +854,7 @@ class Helpers
     {
         $content = null;
         $headers = null;
-        [$proto, $host, $path, $file] = Helpers::explode_url($uri);
+        list($proto, $host, $path, $file) = Helpers::explode_url($uri);
         $is_local_path = ($proto == '' || $proto === 'file://');
 
         set_error_handler([self::class, 'record_warnings']);

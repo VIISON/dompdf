@@ -1015,7 +1015,7 @@ class Cpdf
         return null;
     }
 
-    protected function getFontSubsettingTag(array $font): string
+    protected function getFontSubsettingTag(array $font)
     {
         // convert font num to hexavigesimal numeral system letters A - Z only
         $base_26 = strtoupper(base_convert($font['fontNum'], 10, 26));
@@ -2919,7 +2919,7 @@ EOT;
         return null;
     }
 
-    protected function o_embedded_file($id, $action, $options = null): ?string
+    protected function o_embedded_file($id, $action, $options = null)
     {
         switch ($action) {
             case 'new':
@@ -5441,7 +5441,7 @@ EOT;
      * @param string $embeddedFilename the filename displayed in the list of embedded files
      * @param string $description a description in the list of embedded files
      */
-    public function addEmbeddedFile(string $filepath, string $embeddedFilename, string $description): void
+    public function addEmbeddedFile(string $filepath, string $embeddedFilename, string $description)
     {
         $this->numObj++;
         $this->o_embedded_file_dictionary(

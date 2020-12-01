@@ -353,7 +353,7 @@ class Dompdf
         $this->saveLocale();
 
         if (!$this->protocol && !$this->baseHost && !$this->basePath) {
-            [$this->protocol, $this->baseHost, $this->basePath] = Helpers::explode_url($file);
+            list($this->protocol, $this->baseHost, $this->basePath) = Helpers::explode_url($file);
         }
         $protocol = strtolower($this->protocol);
         
@@ -387,7 +387,7 @@ class Dompdf
             $uri = $realfile;
         }
 
-        [$contents, $http_response_header] = Helpers::getFileContent($uri, $this->httpContext);
+        list($contents, $http_response_header) = Helpers::getFileContent($uri, $this->httpContext);
         if (empty($contents)) {
             throw new Exception("File '$file' not found.");
         }
@@ -581,7 +581,7 @@ class Dompdf
         // <base href="" />
         $base_nodes = $this->dom->getElementsByTagName("base");
         if ($base_nodes->length && ($href = $base_nodes->item(0)->getAttribute("href"))) {
-            [$this->protocol, $this->baseHost, $this->basePath] = Helpers::explode_url($href);
+            list($this->protocol, $this->baseHost, $this->basePath) = Helpers::explode_url($href);
         }
 
         // Set the base path of the Stylesheet to that of the file being processed
