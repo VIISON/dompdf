@@ -124,7 +124,7 @@ class Inline extends AbstractRenderer
         }
     }
 
-    protected function get_child_size(Frame $frame, bool $do_debug_layout_line): array {
+    protected function get_child_size(Frame $frame, bool $do_debug_layout_line) {
         $w = 0.0;
         $h = 0.0;
 

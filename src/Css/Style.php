@@ -2050,7 +2050,7 @@ class Style
             $width = (float)$this->length_in_pt($width);
         }
 
-        $height = $result[1] ?? "auto";
+        $height = isset($result[1]) ? $result[1] : "auto";
         if ($height !== "auto" && strpos($height, "%") === false) {
             $height = (float)$this->length_in_pt($height);
         }

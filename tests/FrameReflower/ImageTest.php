@@ -12,7 +12,7 @@ use Mockery;
 
 class ImageTest extends TestCase
 {
-    public function testGetMinMaxContainerWidthAuto(): void
+    public function testGetMinMaxContainerWidthAuto()
     {
         $frame = $this->getImageMock(['width' => 'auto', 'height' => 'auto']);
 
@@ -29,7 +29,7 @@ class ImageTest extends TestCase
         $this->assertEquals([$expectedWidth, $expectedWidth, 'min' => $expectedWidth, 'max' => $expectedWidth], $result);
     }
 
-    public function testGetMinMaxContainerWidthBasic(): void
+    public function testGetMinMaxContainerWidthBasic()
     {
         $frame = $this->getImageMock(['width' => '100px', 'height' => '200px']);
 
@@ -46,7 +46,7 @@ class ImageTest extends TestCase
         $this->assertEquals([$expectedWidth, $expectedWidth, 'min' => $expectedWidth, 'max' => $expectedWidth], $result);
     }
 
-    public function testGetMinMaxWidthPercentageChain(): void
+    public function testGetMinMaxWidthPercentageChain()
     {
         $rootFrame = $this->getImageMock(['width' => '400px', 'height' => '800px']);
         $parentFrame = $this->getImageMock(['width' => '50%', 'height' => '75%'], $rootFrame);
@@ -67,7 +67,7 @@ class ImageTest extends TestCase
         $this->assertEquals([$expectedWidth, $expectedWidth, 'min' => $expectedWidth, 'max' => $expectedWidth], $result);
     }
 
-    public function testGetMinMaxWidthZeroWidthZeroHeight(): void
+    public function testGetMinMaxWidthZeroWidthZeroHeight()
     {
         $frame = $this->getImageMock(['width' => '0', 'height' => '0']);
 
@@ -84,7 +84,7 @@ class ImageTest extends TestCase
         $this->assertEquals([$expectedWidth, $expectedWidth, 'min' => $expectedWidth, 'max' => $expectedWidth], $result);
     }
 
-    public function testGetMinMaxWidthMinMaxCaps(): void
+    public function testGetMinMaxWidthMinMaxCaps()
     {
         $frame = $this->getImageMock(
             [
@@ -109,7 +109,7 @@ class ImageTest extends TestCase
         $this->assertEquals(['300', '300', 'min' => '300', 'max' => '300'], $result);
     }
 
-    public function tearDown(): void
+    public function tearDown()
     {
         Mockery::close();
     }
@@ -117,7 +117,7 @@ class ImageTest extends TestCase
     private function getImageMock(
         array $styleProperties,
         ImageFrameDecorator $parentFrame = null
-    ): ImageFrameDecorator {
+    ) {
         $style = new Style(new Stylesheet(new Dompdf()));
 
         foreach ($styleProperties as $key => $prop) {

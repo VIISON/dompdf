@@ -203,7 +203,7 @@ class Text extends AbstractFrameReflower
         return $i + 1;
     }
 
-    protected function _layout_line(): bool
+    protected function _layout_line()
     {
         $frame = $this->_frame;
         $style = $frame->get_style();
